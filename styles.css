@@ -1,3 +1,4 @@
+
 /* Base Styles */
 :root {
   --swiggy-orange: #fc8019;
@@ -60,7 +61,7 @@ body {
 /* Container and Card Styles */
 .container {
   width: 100%;
-  max-width: 1000px;
+  max-width: 800px;
 }
 
 .card {
@@ -110,17 +111,12 @@ h1 {
   font-size: 32px;
   font-weight: 600;
   color: var(--text-primary);
-  margin-left: 8px;
 }
 
 .subtitle {
   font-size: 16px;
   color: var(--text-secondary);
   margin-bottom: 20px;
-}
-
-.swiggy-logo {
-  height: 40px;
 }
 
 /* Content Layout - Updated */
@@ -130,22 +126,8 @@ h1 {
 }
 
 @media (min-width: 768px) {
-  .content {
-    flex-direction: row;
-    gap: 30px;
-  }
-  
   .form-section {
-    flex: 3;
-  }
-  
-  .results-section {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+    width: 100%;
   }
 }
 
@@ -239,26 +221,28 @@ select:focus, input[type="date"]:focus {
   box-shadow: 0 0 0 3px rgba(252, 128, 25, 0.15);
 }
 
+/* Button with flat color instead of gradient */
 button {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   padding: 14px 20px;
-  background: linear-gradient(to right, var(--swiggy-orange), var(--swiggy-teal));
+  background-color: var(--swiggy-orange);
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
-  transition: transform 0.2s, box-shadow 0.3s;
+  transition: transform 0.2s, box-shadow 0.3s, background-color 0.3s;
   position: relative;
 }
 
 button:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(252, 128, 25, 0.3);
+  background-color: #e86b08;
 }
 
 button:disabled {
@@ -364,100 +348,14 @@ button:disabled {
   margin-top: 10px;
 }
 
-/* Invoice Decoration - Updated */
-.invoice-decoration {
-  width: 100%;
-  max-width: 300px;
-  background-color: var(--card-bg);
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  position: relative;
-  transform: rotate(-3deg);
-}
-
-.invoice-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px dashed var(--border-color);
-}
-
-.invoice-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, var(--swiggy-orange), var(--swiggy-teal));
-  margin-right: 10px;
-}
-
-.invoice-title {
-  font-weight: 600;
-  font-size: 18px;
-  color: var(--text-primary);
-}
-
-.invoice-items {
-  margin-bottom: 20px;
-}
-
-.invoice-item {
-  height: 16px;
-  background-color: var(--background-color);
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
-
-.invoice-item:nth-child(1) {
-  width: 100%;
-}
-
-.invoice-item:nth-child(2) {
-  width: 85%;
-}
-
-.invoice-item:nth-child(3) {
-  width: 70%;
-}
-
-.invoice-total {
-  height: 20px;
-  background: linear-gradient(90deg, var(--swiggy-orange), var(--swiggy-teal));
-  border-radius: 4px;
-  opacity: 0.8;
-}
-
-/* Added Stats Section for Results Area */
-.stats-container {
-  width: 100%;
-  background: linear-gradient(to bottom right, var(--card-bg), rgba(0, 181, 183, 0.1));
-  border-radius: 12px;
-  padding: 15px;
-  margin-top: 15px;
-}
-
-.stats-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 10px;
-}
-
-.stats-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
+/* Added footer style */
+.footer-text {
+  text-align: center;
+  margin-top: 30px;
   font-size: 14px;
-}
-
-.stats-label {
   color: var(--text-secondary);
-}
-
-.stats-value {
-  font-weight: 500;
-  color: var(--text-primary);
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
 }
 
 /* Utility Classes */
