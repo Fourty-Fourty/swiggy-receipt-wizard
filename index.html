@@ -1,26 +1,295 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>swiggy-receipt-wizard</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-
-    <meta property="og:title" content="swiggy-receipt-wizard" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <title>Swiggy Receipt Wizard</title>
+    <meta name="description" content="Find and organize your Swiggy invoices quickly and easily" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
   </head>
 
   <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="container">
+      <div class="card main-card">
+        <div class="header">
+          <div class="logo-container">
+            <svg class="swiggy-logo" viewBox="0 0 200 80" width="130" height="60">
+              <path fill="#fc8019" d="M142.5,34.5h-18c-0.7,0-1.3,0.6-1.3,1.3v12.8c0,0.7,0.6,1.3,1.3,1.3h4.3v5.2c0,0.3,0.3,0.5,0.5,0.4l5.7-2.9 c0.1,0,0.2-0.1,0.3-0.1h7.2c0.7,0,1.3-0.6,1.3-1.3V35.8C143.8,35.1,143.2,34.5,142.5,34.5z M133.8,45.6c-1.7,0-3-1.3-3-3 c0-1.7,1.3-3,3-3c1.7,0,3,1.3,3,3C136.8,44.2,135.4,45.6,133.8,45.6z M124,17c-3.4,0.1-5.5,0.8-7.6,2.7c-2.5,2.3-3.8,5.6-3.8,10.3 c0,2.8,0.8,5.7,2.5,7.7c1.3,1.6,3.2,2.7,4.9,3.2c1.1,0.3,2.2,0.5,3.5,0.5c1.3,0,2.4-0.1,3.5-0.5c4.1-1.3,7.1-5,7.5-9.3 c0.5-5.1-1.4-9.9-5.6-11.9C127,17.9,125.5,17.2,124,17z M124,34.7c-1.9,0-3.5-1.6-3.5-3.5c0-1.9,1.6-3.5,3.5-3.5 c1.9,0,3.5,1.6,3.5,3.5C127.5,33.1,125.9,34.7,124,34.7z M111.4,29c0,3.8-1.5,7.3-4.2,9.8c-0.6,0.5-1.2,1-1.8,1.5 c-4.8,3-11,3.1-15.8,0.1c-1.2-0.7-2.3-1.6-3.2-2.6c-2.1-2.3-3.3-5.2-3.6-8.3c-0.9-7.4,4.6-14,11.9-14.9c0.7-0.1,1.4-0.1,2.1-0.1 c2.7,0,5.3,0.8,7.6,2.4C108.7,19.8,111.4,24.2,111.4,29z M98.4,34.7c-1.9,0-3.5-1.6-3.5-3.5c0-1.9,1.6-3.5,3.5-3.5 c1.9,0,3.5,1.6,3.5,3.5C101.9,33.1,100.3,34.7,98.4,34.7z M79.1,21.9l-7.7-0.1v20.9c0,0.6-0.5,1.1-1.1,1.1h-4 c-0.6,0-1.1-0.5-1.1-1.1V21.9l-7.7-0.1c-0.6,0-1.2-0.5-1.2-1.2V18c0-0.6,0.5-1.2,1.2-1.2h21.5c0.6,0,1.1,0.5,1.1,1.2v2.7 C80.2,21.3,79.7,21.9,79.1,21.9z M63,38.3c-0.2,0-0.3-0.1-0.4-0.3l-2.3-4c-0.2-0.3,0-0.7,0.3-0.8l15.7-9c0.3-0.2,0.7,0,0.8,0.3 l2.3,4c0.2,0.3,0,0.7-0.3,0.8l-15.7,9C63.2,38.2,63.1,38.3,63,38.3z"></path>
+            </svg>
+            <h1>Receipt Wizard</h1>
+          </div>
+          <p class="subtitle">Find and organize your Swiggy invoices quickly and easily</p>
+        </div>
+
+        <div class="content">
+          <div class="form-section">
+            <div class="tab-selector">
+              <label class="tab active">
+                <input type="radio" name="dateRangeType" value="monthYear" checked onchange="toggleDateInputs()"> 
+                <span>Month & Year</span>
+              </label>
+              <label class="tab">
+                <input type="radio" name="dateRangeType" value="customRange" onchange="toggleDateInputs()"> 
+                <span>Custom Range</span>
+              </label>
+            </div>
+
+            <div id="monthYearInputs" class="date-option-group">
+              <div class="form-group">
+                <label for="yearSelect">Year</label>
+                <div class="select-wrapper">
+                  <select id="yearSelect" name="yearSelect"></select>
+                  <div class="select-arrow"></div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="monthSelect">Month</label>
+                <div class="select-wrapper">
+                  <select id="monthSelect" name="monthSelect">
+                    <option value="0">January</option>
+                    <option value="1">February</option>
+                    <option value="2">March</option>
+                    <option value="3">April</option>
+                    <option value="4">May</option>
+                    <option value="5">June</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <option value="8">September</option>
+                    <option value="9">October</option>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                  </select>
+                  <div class="select-arrow"></div>
+                </div>
+              </div>
+            </div>
+
+            <div id="customRangeInputs" class="date-option-group hidden">
+              <div class="form-group">
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate" name="startDate">
+              </div>
+
+              <div class="form-group">
+                <label for="endDate">End Date</label>
+                <input type="date" id="endDate" name="endDate">
+              </div>
+            </div>
+
+            <button id="runButton" onclick="runScript()">
+              <span class="button-text">Process Emails</span>
+              <span class="spinner hidden"></span>
+            </button>
+          </div>
+
+          <div class="results-section">
+            <div class="invoice-decoration">
+              <div class="invoice-header">
+                <div class="invoice-logo"></div>
+                <div class="invoice-title">Invoice</div>
+              </div>
+              <div class="invoice-items">
+                <div class="invoice-item"></div>
+                <div class="invoice-item"></div>
+                <div class="invoice-item"></div>
+              </div>
+              <div class="invoice-total"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="status" class="hidden"></div>
+        
+        <div id="links" class="hidden">
+          <div class="links-container">
+            <span id="sheetLinkSpan"></span>
+            <span id="folderLinkSpan"></span>
+          </div>
+          <p class="links-hint">To download folder contents, open the folder link and use the Google Drive download option.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function setStatus(message, type) {
+        var statusDiv = document.getElementById('status');
+        var linksDiv = document.getElementById('links');
+        statusDiv.textContent = message;
+        statusDiv.className = ''; // Reset class
+        
+        if (message) {
+          statusDiv.classList.remove('hidden');
+          statusDiv.classList.add('status-' + type);
+        } else {
+          statusDiv.classList.add('hidden');
+        }
+        
+        if (type !== 'processing') {
+          document.querySelector('.spinner').classList.add('hidden');
+          document.querySelector('.button-text').classList.remove('hidden');
+        }
+        
+        linksDiv.classList.add('hidden'); // Hide links when status updates
+        document.getElementById('sheetLinkSpan').innerHTML = ''; // Clear old links
+        document.getElementById('folderLinkSpan').innerHTML = ''; // Clear old links
+      }
+
+      function toggleDateInputs() {
+        var selectedType = document.querySelector('input[name="dateRangeType"]:checked').value;
+        document.getElementById('monthYearInputs').classList.toggle('hidden', selectedType !== 'monthYear');
+        document.getElementById('customRangeInputs').classList.toggle('hidden', selectedType !== 'customRange');
+        
+        // Toggle active tab
+        document.querySelectorAll('.tab').forEach(tab => {
+          if (tab.querySelector('input').value === selectedType) {
+            tab.classList.add('active');
+          } else {
+            tab.classList.remove('active');
+          }
+        });
+      }
+
+      function formatDateToYYYYMMDD(date) {
+        var d = new Date(date);
+        var month = String(d.getUTCMonth() + 1).padStart(2, '0');
+        var day = String(d.getUTCDate()).padStart(2, '0');
+        var year = d.getUTCFullYear();
+        return [year, month, day].join('-');
+      }
+
+      function displayLinks(sheetUrl, folderUrl) {
+        var linksDiv = document.getElementById('links');
+        var sheetLinkSpan = document.getElementById('sheetLinkSpan');
+        var folderLinkSpan = document.getElementById('folderLinkSpan');
+        var hasLinks = false;
+
+        sheetLinkSpan.innerHTML = ''; // Clear previous
+        folderLinkSpan.innerHTML = ''; // Clear previous
+
+        if (sheetUrl) {
+          sheetLinkSpan.innerHTML = '<a href="' + sheetUrl + '" target="_blank" class="link-button sheet-link">View Summary Sheet</a>';
+          hasLinks = true;
+        }
+        if (folderUrl) {
+          folderLinkSpan.innerHTML = '<a href="' + folderUrl + '" target="_blank" class="link-button folder-link">View Drive Folder</a>';
+          hasLinks = true;
+        }
+        
+        linksDiv.classList.toggle('hidden', !hasLinks);
+      }
+
+      function runScript() {
+        var selectedType = document.querySelector('input[name="dateRangeType"]:checked').value;
+        var startDate, endDate, folderName, sheetName;
+        var baseFolderName = "swiggy_receipts";
+        var baseSheetName = "Swiggy_Summary";
+        var runButton = document.getElementById('runButton');
+        var uniqueId = Date.now(); // Generate unique ID based on timestamp
+        
+        // Show spinner, hide button text
+        document.querySelector('.spinner').classList.remove('hidden');
+        document.querySelector('.button-text').classList.add('hidden');
+
+        try {
+          if (selectedType === 'monthYear') {
+            var year = document.getElementById('yearSelect').value;
+            var month = parseInt(document.getElementById('monthSelect').value); 
+            if (!year || isNaN(month)) throw new Error('Please select Year and Month.');
+            
+            var firstDay = new Date(Date.UTC(year, month, 1));
+            var lastDay = new Date(Date.UTC(year, month + 1, 0));
+            
+            startDate = formatDateToYYYYMMDD(firstDay);
+            endDate = formatDateToYYYYMMDD(lastDay);
+            
+            var monthPadded = String(month + 1).padStart(2, '0');
+            folderName = baseFolderName + "_" + year + "_" + monthPadded + "_" + uniqueId;
+            sheetName = baseSheetName + "_" + year + "_" + monthPadded;
+          } else { // customRange
+            startDate = document.getElementById('startDate').value;
+            endDate = document.getElementById('endDate').value;
+            if (!startDate || !endDate) throw new Error('Please select Start and End Date.');
+            
+            var startDt = new Date(startDate + 'T00:00:00Z');
+            var endDt = new Date(endDate + 'T00:00:00Z');
+            if (startDt > endDt) throw new Error('Start Date cannot be after End Date.');
+            
+            startDate = formatDateToYYYYMMDD(startDt); 
+            endDate = formatDateToYYYYMMDD(endDt);
+            
+            folderName = baseFolderName + "_Custom_" + startDate + "_to_" + endDate + "_" + uniqueId;
+            sheetName = baseSheetName + "_Custom_" + startDate + "_to_" + endDate;
+          }
+        } catch (err) {
+            setStatus(err.message, 'error');
+            return;
+        }
+        
+        runButton.disabled = true;
+        setStatus('Processing emails from ' + startDate + ' to ' + endDate + '. Please wait...', 'processing');
+        displayLinks(null, null); 
+
+        // Mock API call for demo purposes - replace with actual Google Scripts API call
+        setTimeout(function() {
+          // For demonstration only - in actual implementation use google.script.run
+          var result = {
+            message: "Successfully processed 12 invoices from " + startDate + " to " + endDate,
+            sheetUrl: "https://example.com/sheet",
+            folderUrl: "https://example.com/folder" 
+          };
+          
+          setStatus(result.message, 'success'); 
+          displayLinks(result.sheetUrl, result.folderUrl); 
+          runButton.disabled = false;
+          
+          /*
+          // Uncomment this and remove the mock code above when using with Google Apps Script
+          google.script.run
+            .withSuccessHandler(function(result) { 
+              setStatus(result.message, 'success'); 
+              displayLinks(result.sheetUrl, result.folderUrl); 
+              runButton.disabled = false; 
+            })
+            .withFailureHandler(function(error) {
+              var errorData = { message: 'An unknown error occurred.', sheetUrl: null, folderUrl: null };
+              try {
+                  errorData = JSON.parse(error.message);
+              } catch (e) {
+                  errorData.message = error.message.replace('Processing failed: ','');
+              }
+              setStatus('Error: ' + errorData.message, 'error'); 
+              displayLinks(errorData.sheetUrl, errorData.folderUrl);
+              runButton.disabled = false; 
+            })
+            .processSwiggyEmails(startDate, endDate, folderName, sheetName);
+          */
+        }, 2000);
+      }
+      
+      function populateYears() {
+        var yearSelect = document.getElementById('yearSelect');
+        var currentYear = new Date().getFullYear();
+        for (var i = currentYear; i >= currentYear - 10; i--) { 
+            var option = document.createElement('option');
+            option.value = i;
+            option.text = i;
+            yearSelect.appendChild(option);
+        }
+        // Set default selected month/year (e.g., current or previous)
+        var defaultDate = new Date(); // Use current month as default
+        yearSelect.value = defaultDate.getFullYear();
+        document.getElementById('monthSelect').value = defaultDate.getMonth(); // 0-indexed
+      }
+      
+      // Initialize on load
+      window.onload = function() {
+          populateYears();
+          toggleDateInputs(); 
+      };
+    </script>
   </body>
 </html>
